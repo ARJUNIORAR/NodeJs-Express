@@ -3,7 +3,7 @@ const {Router} = require("express");
 const router = Router();
 
 router.get("/atendimentos", (req, res) => {
-    res.send("Chegou aqui, estamos listando todos os atendimentos...");
+    res.json({"Nome":[1, 2, 3, 4, 5, 6, 7, 8, 9,10]});
 
 });
 
