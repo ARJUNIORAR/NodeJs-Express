@@ -1,9 +1,11 @@
 //const Routes = require("express").Router;
 const {Router} = require("express");
 const router = Router();
+const controller = require("../controller")
 
 router.get("/atendimentos", (req, res) => {
-    res.json({"Nome":[1, 2, 3, 4, 5, 6, 7, 8, 9,10]});
+    const reposta = controller.buscar();
+    res.send(reposta);
 
 });
 
