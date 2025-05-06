@@ -1,11 +1,11 @@
 //const Routes = require("express").Router;
 const {Router} = require("express");
 const router = Router();
-//const controller = require("../controller")
+const alunoService = require("../service/alunoService")
 
 router.get("/atendimentos", (req, res) => {
-    const reposta = controller.buscar();
-    res.send(reposta);
+    alunoService.cadastrar();
+    res.send(alunoService.listar());
 
 });
 
