@@ -1,7 +1,7 @@
 //const Routes = require("express").Router;
 const {Router} = require("express");
 const router = Router();
-const controller = require("../controller")
+//const controller = require("../controller")
 
 router.get("/atendimentos", (req, res) => {
     const reposta = controller.buscar();
