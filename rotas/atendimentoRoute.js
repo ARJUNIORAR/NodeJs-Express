@@ -3,21 +3,28 @@ const {Router} = require("express");
 const router = Router();
 const alunoService = require("../service/alunoService")
 
-router.get("/atendimentos", (req, res) => {
+router.get("/service/alunosService", (req, res) => {
     alunoService.cadastrar();
-    res.send(alunoService.listar());
+    res.send(alunoService.listar()); // chama a função para obter uma lista de alunos.
 
 });
 
-router.post("/atendimentos", (req, res) => {
-    res.send("Chegou aqui, estamos criando um novo atendimento...");
+router.put("/service/alunosService", (req, res) => {
+    alunoService.editar();
+    res.send(AlunoService.listar()); // Utilizando a mesma função padrão, verificar com james.
 });
-router.put("/atendimentos/:id", (req, res) => {
-    const {id} = req.params;
-    res.send(`´Chegou aqui, estamos atualizando o atendimento  ${id}...`);
+router.get("/service/alunosService:id", (req, res) => {
+    alunoService.buscar();
+    res.send(alunosService.listar()); // Utilizando a mesma função padrão, verificar com james.
 });
-router.delete("/atendmentos:id", (req, res) => {
-    const {id} = req.params;
-    res.send(`Chegou aqui, estamos criando um novo atendimento. ${id}..`);
+router.delete("/service/alunosService", (req, res) => {
+    alunoService.excluir();
+    res.send(alunos.Service.listar());
 });
+router.get("/service/alunosService", (req, res) => {
+    alunoService.listar();
+    res.send(alunos.Service.listar());
+});
+
+
 module.exports = router;
