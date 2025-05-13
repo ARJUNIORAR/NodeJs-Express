@@ -3,9 +3,10 @@ const {Router} = require("express");
 const router = Router();//Buscar a instancia da variavel acima
 const alunoService = require("../service/alunoService");
 const professorService = require("../service/professorService");
+const upload = require('../util/upload')
 
-router.post("/aluno/", (req, res) => {
-    alunoService.cadastrar();
+router.post("/aluno/",upload.single('foto'), (req, res) => {
+    console.log(req.body)
     res.send(alunoService.listar()); //chama a função para obter uma lista de alunos.
 
 });
