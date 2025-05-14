@@ -24,7 +24,8 @@ const Aluno = seque.define(
         },
         cpf:{
             type:DataTypes.STRING,
-            require: false
+            require: false,
+            unique: true
         },
         rg:{
             type:DataTypes.STRING,

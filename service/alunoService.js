@@ -1,9 +1,30 @@
+const Aluno = require('../model/entity/aluno') //Estou importando a entidade aluno para utilizar os metodos.
+
 const AlunoService = {
-    cadastrar:() =>{console.log('1')},
-    editar:()=> {console.log('2')},
-    excluir:() => {console.log ('3')},
-    listar:() => {return [1,2,3,4,5]},
-    buscar: () => {console.log('5')}
+    cadastrar:async (aluno) =>{
+        try{
+            const user = await Aluno.create(aluno);
+            //user.save()
+            return user;
+
+        } catch(erro){
+            console.log(erro)
+        }     
+    },
+
+    editar:(aluno)=> {console.log('2')},
+    excluir:async(chave) => {
+        Aluno.destroy({
+            where:{
+                id:chave
+            }
+        })
+
+    },
+    listar:async() => {
+        return await Aluno.findAll()
+    },
+    buscar: (id) => {console.log('5')}
 
 
 }

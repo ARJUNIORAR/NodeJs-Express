@@ -7,7 +7,7 @@ const upload = require('../util/upload')
 
 router.post("/aluno/",upload.single('foto'), (req, res) => {
     console.log(req.body)
-    res.send(alunoService.listar()); //chama a função para obter uma lista de alunos.
+    res.send(alunoService.cadastrar(req.body));
 
 });
 
@@ -21,14 +21,14 @@ router.get("/aluno/:id", (req, res) => {
     res.send(alunoService.buscar());
 });
 
-router.delete("/aluno/", (req, res) => {
-    alunoService.excluir();
-    res.send(alunoService.excluir());
+router.delete("/aluno/:id", (req, res) => {
+    console.log(req.params.id);
+    res.send(alunoService.excluir(req.params.id));
 });
 
-router.get("/alunos/", (req, res) => {
+router.get("/alunos/", async (req, res) => {
     alunoService.listar();
-    res.send(alunoService.listar());
+    res.send(await alunoService.listar());
 });
 
 // Rota abaixo serve para o login do usuario.
