@@ -11,23 +11,19 @@ router.post("/aluno/",upload.single('foto'), (req, res) => {
 
 });
 
-router.put("/aluno/", (req, res) => {
-    alunoService.editar();
-    res.send(alunoService.editar()); // linha serve para retornar o dado 
+router.put("/aluno/", upload.single('foto'),(req, res) => {
+    res.send(alunoService.editar(req.body)); // linha serve para retornar o dado 
 });
 
-router.get("/aluno/:id", (req, res) => {
-    alunoService.buscar();
-    res.send(alunoService.buscar());
+router.get("/aluno/:id", async(req, res) => {
+    res.send(await alunoService.buscar(req.params.id));
 });
 
 router.delete("/aluno/:id", (req, res) => {
-    console.log(req.params.id);
     res.send(alunoService.excluir(req.params.id));
 });
 
 router.get("/alunos/", async (req, res) => {
-    alunoService.listar();
     res.send(await alunoService.listar());
 });
 

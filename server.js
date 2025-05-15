@@ -16,7 +16,7 @@ app.listen(port,async(error) => {
     console.log("Aplicação rodando");
     try {
         await seque.authenticate();
-        await seque.sync({force: true});
+        await seque.sync({force: false});
         console.log('Connection has been established successfully.');
       } catch (error) {
         console.error('Unable to connect to the database:', error);
