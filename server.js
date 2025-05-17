@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const router = require("./rotas/index")
+const router = require("./rotas/route")
 const seque = require('./model/connection/conexao')
 const Pofessor = require('./model/entity/professor') // Importa a variavel para gerar a tabela no banco
 const Aluno = require('./model/entity/aluno')// Importa a variavel para gerar a tabela no banco
 
-router(app);
+app.use(express.json())
+app.use(router)
 
 app.listen(port,async(error) => {
     if(error) {

@@ -2,8 +2,9 @@ const Professor = require('../model/entity/professor') //Estou importando a enti
 
 const ProfessorService = {
     login:async (professor) => {
+        console.log(professor.email, professor.senha)
         try{
-            const user = await Professor.login( email, senha );
+            const user = await Professor.login( professor.email, professor.senha );
             return true;
 
         } catch(erro){
