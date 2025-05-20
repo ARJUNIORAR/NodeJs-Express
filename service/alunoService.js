@@ -1,47 +1,47 @@
 const Aluno = require('../model/entity/aluno') //Estou importando a entidade aluno para utilizar os metodos.
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 
 const AlunoService = {
-    cadastrar:async (aluno) =>{
-        try{
+    cadastrar: async (aluno) => {
+        try {
             const user = await Aluno.create(aluno);
             return user;
 
-        } catch(erro){
+        } catch (erro) {
             console.log(`O ERRO ESTOUROU AQUI ${erro}`)
-        }     
+        }
     },
 
-    editar:async(aluno)=> {
-        return await Aluno.update(aluno,{
-            where:{
-                id:aluno.id
+    editar: async (aluno) => {
+        return await Aluno.update(aluno, {
+            where: {
+                id: aluno.id
             }
         })
     },
 
-    excluir:async(chave) => {
+    excluir: async (chave) => {
         return await Aluno.destroy({
-            where:{
-                id:chave
+            where: {
+                id: chave
             }
         })
 
     },
-    listar:async() => {
+    
+    listar: async () => {
         return await Aluno.findAll()
     },
-    buscar:async(id) => {
+
+    buscar: async (id) => {
         return await Aluno.findAll({
-            where:{
-                nome:{
+            where: {
+                nome: {
                     [Op.iLike]: `%${id}%`
                 }
             }
         })
     }
-
-
 }
 
 module.exports = Object.create(AlunoService);

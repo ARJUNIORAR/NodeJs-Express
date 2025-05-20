@@ -1,15 +1,15 @@
 const seque = require('../connection/conexao')// A variel está importando a variavel da rota do require.
-const {DataTypes} = require('sequelize')// A variavel está impotando os tipos de dados que o banco possui
+const { DataTypes } = require('sequelize')// A variavel está impotando os tipos de dados que o banco possui
 
 const Professor = seque.define(
-    'professor', 
+    'professor',
     {
-        email:{
-            type:DataTypes.STRING,
-            primaryKey:true
+        email: {
+            type: DataTypes.STRING,
+            primaryKey: true
         },
-        senha:{
-            type:DataTypes.STRING,
+        senha: {
+            type: DataTypes.STRING,
             require: true
         }
 

@@ -9,18 +9,18 @@ const Aluno = require('./model/entity/aluno')// Importa a variavel para gerar a 
 app.use(express.json())
 app.use(router)
 
-app.listen(port,async(error) => {
-    if(error) {
-        console.log("Deu erro");
-        return;
-    }
-    console.log("Aplicação rodando");
-    try {
-        await seque.authenticate();
-        await seque.sync({force: false});
-        console.log('Connection has been established successfully.');
-      } catch (error) {
-        console.error('Unable to connect to the database:', error);
-      }
+app.listen(port, async (error) => {
+  if (error) {
+    console.log("Deu erro");
+    return;
+  }
+  console.log("Aplicação rodando");
+  try {
+    await seque.authenticate();
+    await seque.sync({ force: false });
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 });
 
