@@ -5,13 +5,16 @@ const professorService = require("../service/professorService");
 const upload = require('../util/upload')
 
 router.post("/aluno/", upload.single('foto'), (req, res) => {
-    console.log(req.file)
-    res.send(alunoService.cadastrar(req.body));
+    const aluno = {...req.body,foto:req.file?.filename}
+    console.log(aluno)
+    res.send(alunoService.cadastrar(aluno));
 
 });
 
 router.put("/aluno/", upload.single('foto'), (req, res) => {
-    res.send(alunoService.editar(req.body)); // linha serve para retornar o dado 
+    let aluno = req.body;
+    if (req.file) aluno = {...aluno,foto:req.file?.filename}
+    res.send(alunoService.editar(aluno)); // linha serve para retornar o dado
 });
 
 router.get("/aluno/:id", async (req, res) => {
