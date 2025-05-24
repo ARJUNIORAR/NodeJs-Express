@@ -8,6 +8,7 @@ const Aluno = require('./model/entity/aluno')// Importa a variavel para gerar a 
 
 app.use(express.json())
 app.use(router)
+app.use(express.static(`${__dirname}/upload`))
 
 app.listen(port, async (error) => {
   if (error) {

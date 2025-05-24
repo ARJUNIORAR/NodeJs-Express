@@ -2,7 +2,8 @@ const { Router } = require("express");
 const router = Router();//Buscar a instancia da variavel acima
 const alunoService = require("../service/alunoService");
 const professorService = require("../service/professorService");
-const upload = require('../util/upload')
+const upload = require('../util/upload');
+const alunoDTO = require('../model/dto/alunodto')
 
 router.post("/aluno/", upload.single('foto'), (req, res) => {
     const aluno = {...req.body,foto:req.file?.filename}
@@ -26,7 +27,8 @@ router.delete("/aluno/:id", (req, res) => {
 });
 
 router.get("/alunos/", async (req, res) => {
-    res.send(await alunoService.listar());
+    const alunos = await alunoService.listar();
+    res.send(alunoDTO.muitos(alunos));
 });
 
 // Rota abaixo serve para o login do usuario.
