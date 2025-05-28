@@ -34,8 +34,11 @@ router.get("/alunos/", async (req, res) => {
 // Rota abaixo serve para o login do usuario.
 
 router.post("/professor/login", async (req, res) => {
-    console.log(req.body)
-    res.send(await professorService.login(req.body));
+    const professor = await professorService.login(req.body)
+    if (professor)
+        return res.status(200).json()
+    return res.status(404).json()
+
 });
 
 module.exports = router;
