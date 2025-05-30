@@ -9,6 +9,7 @@ const AlunoService = {
 
         } catch (erro) {
             console.log(`O ERRO ESTOUROU AQUI ${erro}`)
+            return undefined
         }
     },
 

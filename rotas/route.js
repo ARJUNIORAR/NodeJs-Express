@@ -6,9 +6,12 @@ const upload = require('../util/upload');
 const alunoDTO = require('../model/dto/alunodto')
 
 router.post("/aluno/", upload.single('foto'), (req, res) => {
-    const aluno = {...req.body,foto:req.file?.filename}
+    let aluno = {...req.body,foto:req.file?.filename}
     console.log(aluno)
-    res.send(alunoService.cadastrar(aluno));
+    aluno = alunoService.cadastrar(aluno)
+    if (aluno)
+        return res.status(201).json()
+    return res.status(500).json()
 
 });
 
