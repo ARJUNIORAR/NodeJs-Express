@@ -35,11 +35,9 @@ const AlunoService = {
     },
 
     buscar: async (id) => {
-        return await Aluno.findAll({
+        return await Aluno.findOne({
             where: {
-                nome: {
-                    [Op.iLike]: `%${id}%`
-                }
+                id: Number(id)
             }
         })
     }

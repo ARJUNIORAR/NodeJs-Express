@@ -19,7 +19,7 @@ const Aluno = seque.define(
             require: false
         },
         dt_nasc: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             require: true
         },
         cpf: {
@@ -60,7 +60,7 @@ const Aluno = seque.define(
             require: false
         }
 
-    }
+    }, {timestamps:false}
 )
 Professor.hasMany(Aluno) // Definindo o tipo de relacionamento do banco entre as tabelas(Entidade.)
 module.exports = Aluno
