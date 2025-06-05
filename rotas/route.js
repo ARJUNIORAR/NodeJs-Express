@@ -5,20 +5,24 @@ const professorService = require("../service/professorService");
 const upload = require('../util/upload');
 const alunoDTO = require('../model/dto/alunodto')
 
-router.post("/aluno/", upload.single('foto'), (req, res) => {
+router.post("/aluno/", upload.single('foto'), async (req, res) => {
     let aluno = {...req.body,foto:req.file?.filename}
     console.log(aluno)
-    aluno = alunoService.cadastrar(aluno)
+    aluno =     await alunoService.cadastrar(aluno)
     if (aluno)
         return res.status(201).json()
     return res.status(500).json()
 
 });
 
-router.put("/aluno/", upload.single('foto'), (req, res) => {
+router.put("/aluno/", upload.single('foto'), async (req, res) => {
     let aluno = req.body;
+    console.log(req.body)
     if (req.file) aluno = {...aluno,foto:req.file?.filename}
-    res.send(alunoService.editar(aluno)); // linha serve para retornar o dado
+    aluno = await alunoService.editar(aluno)
+    if (aluno)
+        return res.status(201).json()
+    return res.status(500).json()
 });
 
 router.get("/aluno/:id", async (req, res) => {

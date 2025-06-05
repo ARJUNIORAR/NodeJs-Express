@@ -14,11 +14,16 @@ const AlunoService = {
     },
 
     editar: async (aluno) => {
-        return await Aluno.update(aluno, {
+        try {
+           return await Aluno.update(aluno, {
             where: {
                 id: aluno.id
             }
-        })
+        }) 
+        } catch {
+            return undefined;
+        }
+        
     },
 
     excluir: async (chave) => {
